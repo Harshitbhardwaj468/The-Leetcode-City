@@ -130,7 +130,7 @@ function RainWeather() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial color="#a7c7ff" size={2} sizeAttenuation transparent opacity={0.45} depthWrite={false} />
+      <pointsMaterial color="#a7c7ff" size={4} sizeAttenuation={false} transparent opacity={0.6} depthWrite={false} />
     </points>
   );
 }
