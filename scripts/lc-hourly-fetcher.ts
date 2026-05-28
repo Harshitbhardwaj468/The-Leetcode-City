@@ -41,8 +41,12 @@ function sleep(ms: number) {
 }
 
 function calendarAliases(): string {
-    const year = new Date().getFullYear();
-    return Array.from({ length: year - 2014 }, (_, i) => 2015 + i)
+    const currentYear = new Date().getFullYear();
+    const START_YEAR = currentYear - 2;
+
+    return Array.from({ length: currentYear - START_YEAR + 1 },
+        (_, i) => START_YEAR + i
+    )
         .map((y) => `\n        y${y}: userCalendar(year: ${y}) { submissionCalendar }`)
         .join("");
 }
