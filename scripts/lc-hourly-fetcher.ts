@@ -42,11 +42,9 @@ function sleep(ms: number) {
 
 function calendarAliases(): string {
     const currentYear = new Date().getFullYear();
-    const START_YEAR = currentYear - 2;
+    const prevYear = currentYear - 1;
 
-    return Array.from({ length: currentYear - START_YEAR + 1 },
-        (_, i) => START_YEAR + i
-    )
+    return [currentYear, prevYear]
         .map((y) => `\n        y${y}: userCalendar(year: ${y}) { submissionCalendar }`)
         .join("");
 }

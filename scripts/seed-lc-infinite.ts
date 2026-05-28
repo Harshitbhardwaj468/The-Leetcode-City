@@ -70,7 +70,7 @@ async function fetchRankingPage(page: number): Promise<string[]> {
 // 2. Fetch rich user stats
 async function fetchLCUserStats(username: string) {
     const currentYear = new Date().getFullYear();
-    const START_YEAR = currentYear - 2;
+    const prevYear = currentYear - 1;
     
     const query = `
     query($username: String!) {
@@ -82,10 +82,7 @@ async function fetchLCUserStats(username: string) {
           totalSubmissionNum { difficulty count }
         }
         userCalendar { streak totalActiveDays }${
-            Array.from(
-                { length: currentYear - START_YEAR + 1 },
-                (_, i) => START_YEAR + i
-            )
+            [currentYear, prevYear]
                 .map(y => `\n        y${y}: userCalendar(year: ${y}) { submissionCalendar }`).join("")
         }
       }
